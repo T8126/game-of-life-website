@@ -3,9 +3,218 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	 <title>Conway's Game of Life</title>
+	 <link href="main.css" rel="stylesheet" type="text/css">
+	 <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
-    <h1>Test</h1>
+    <h1>Conway's Game of Life</h1>
+	 	<h2>Introduction</h2>
+	 		<p>If you've ever played games such as Chess or Go, you'll know that complexity can arise with simple rules. Conway's Game of Life is a "game" with a simple concept and rules that can create intricate patterns and complex designs. This post will explain the rules of the game and showcase a few interesting patterns.</p>
+	 		<p>This post requires no prior knowledge to understand.</p>
+	 	<h2>How to Play</h2>
+	 		<p>Conway's Game of Life is a 0-player game because the only input it requires from the player is an intial configuration. It is played on an infinite grid where each square represents a cell. Each cell has two states, live or dead. Each cell also has a neighbourhood, the 8 cells surrounding it. They are called the cell's neighbours. Every generation, a set of rules are carried out for each cell, based off of its neighbourhood to find its next state.</p>
+	 		<p>There are only 4 rules:</p>
+	 		<ol>
+				<li>A live cell dies if it has less than two live neighbours</li>
+				<li>A live cell with 2-3 live neighbours lives</li>
+				<li>A live cell with more than 3 live neighbours dies</li>
+				<li>A dead cell with exactly 3 live neighbours becomes live</li>
+	 		</ol>
+			<p>While the game of life is supposed to be infinite, if you are trying to simulate the game on a computer, you have a finite amount of memory and can only display a finite number of cells.</p>
+			<p>There are two common solutions to this problem:</p>
+			<ul>
+				<li>The first is to assume that all of the border cells are dead and will stay dead.</li>
+				<li>The second solution is to loop it around the screen. For example you would have the right side lead to the left side, the bottom side lead to the top side, etc.</li>
+			</ul>
+			<p>Both of these can lead to inaccurate results if the pattern grows too large, but unfortunately, this is the best we can do. :)</p>
+	 	<h2>Important Patterns</h2>
+			<p>Conway's Game of Life has three types of patterns that will live forever.</p>
+			<h3>Still Lifes</h3>
+				<p>Still lifes are patterns that stay the same. Here are some examples:</p>
+				<div class="container">
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/4/48/Block.png">
+						<p class="caption">Block</p>
+					</div>
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/b/ba/Loaf.png">
+						<p class="caption">Loaf</p>
+					</div>
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/6/61/Canoe.png">
+						<p class="caption">Canoe</p>
+					</div>
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/2/29/Clips.png">
+						<p class="caption">Clips</p>
+					</div>
+				</div>
+			<h3>Oscillators</h3>
+				<p>Oscillators are patterns that change shape and always return back to the original pattern. Here are some examples:</p>
+				<div class="container">
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/b/b9/Blinker.gif">
+						<p class="caption">Blinker</p>
+					</div>
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/3/37/Clock.gif">
+						<p class="caption">Clock</p>
+					</div>
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/d/dd/Figureeight.gif">
+						<p class="caption">Figure Eight</p>
+					</div>
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/e/ef/Pulsar.gif">
+						<p class="caption">Pulsar</p>
+					</div>
+				</div>
+			<h3>Spaceships</h3>
+				<p>Spaceships are patterns similar to oscillators. They always return to the original shape, but not the same location. Spaceships move across the screen, as they return to their orginal shape. Here are some examples:</p>
+				<div class="container">
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/8/81/Glider.gif">
+						<p class="caption">Glider</p>
+					</div>
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/2/21/Lwss.gif">
+						<p class="caption">Light-weight Spaceship</p>
+					</div>
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/9/9f/Spider.gif">
+						<p class="caption">Spider</p>
+					</div>
+					<div class="item">
+						<img class="lifeimg" src="https://www.conwaylife.com/w/images/7/7d/Schickengine.gif">
+						<p class="caption">Schick Engine</p>
+					</div>
+				</div>
+			<p>Every pattern in the game of life is chaotic until it dies out or becomes a combination of still lifes, oscillators, and spaceships.</p>
+	 	<h2>Examples of Patterns</h2>
+			<p>Using the 4 simple rules of Conway's Game of Life, many complex patterns can be created.</p>
+			<p>One of the most famous patterns is the R-Pentomino. It consists of just 5 live cells but lives on for 1103 generations until becoming stable. In the end, it creates 25 objects (still lifes, oscillators, and spaceships) in total. The R-Pentomino was discovered by the game's creator, John Conway, in 1969. The glider that is shot out in generation 69 was the first glider ever observed!</p>
+			<p>After inventing the game, John Conway offered a $50 prize to whoever could prove or disprove the existence of a life pattern that could grow infinitely large. In 1970, Bill Gosper discovered the "Gosper Glider Gun", a pattern that creates a glider every 30 generations and consists of only 36 cells. It was the smallest glider gun (in terms of total live cells) until 2015, when Michael Simkin discovered the "Simkin Glider Gun", which consists of only 29 cells and produces a glider every 120 generations.</p>
+			<p>Huge, complex patterns can also be created. People have been able to create a digital clock, have simulated a computer, and have even created the Game of Life, in the Game of Life!</p>
+			<div class="container">
+				<div class="item">
+					<img class="img2" src="https://www.conwaylife.com/w/images/6/6e/Rpentomino.png">
+					<p class="caption">R-Pentomino</p>
+				</div>
+				<div class="item">
+					<img class="img2" src="https://www.conwaylife.com/w/images/b/b6/Gosperglidergun.gif">
+					<p class="caption">Gosper Glider Gun</p>
+				</div>
+				<div class="item">
+					<iframe width="320" height="180" src="https://www.youtube.com/embed/xP5-iIeKXE8" frameborder="0" allowfullscreen></iframe>
+					<p class="caption">Life in Life</p>
+				</div>
+			</div>
+			<p>Conway's Game of Life is also Turing complete. This means that it has the capabilities of a Turing Machine. It is able to solve any computation problem. Gliders can be used to represent bits: a glider represents a 1 and the absence of one represents a 0. Other patterns that interact with the gliders can create AND, OR, and NOT logic gates.</p>
+	 	<h2>Applications</h2>
+			<p>Conway's Game of Life is part of a group of "games" called cellular automata (CA). Cellular automata all have the same concept as Life: they have a grid of cells that have a finite number of states. The neighbourhood of each cell decides their state every generation.</p>
+			<p>Various cellular automata can be used to model many processes including:</p>
+			<ul>
+				<li>Patterns on cone snail shells as well as on cephalopods</li>
+				<li>Crystal growth (ex: patterns in snowflakes)</li>
+				<li>Forest fire propagation</li>
+				<li>Demagnetization of ferromagnets caused by heat</li>
+				<li>Urban growth</li>
+			</ul>
+			<div class="container">
+				<div class="item">
+					<img class="img" src="https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/beautiful-shell.jpg">
+					<p class="caption">Cone Snail shell</p>
+				</div>
+				<div class="item">
+					<img class="img" src="https://media.npr.org/assets/img/2010/10/26/01_kiruna3_custom-7d1cd52d89467a185f893c77083eec13cd1bdbac.jpg">
+					<p class="caption">Zoomed in snowflake</p>
+				</div>
+				<div class="item">
+					<img class="img" src="https://nhess.copernicus.org/articles/19/169/2019/nhess-19-169-2019-avatar-web.png">
+					<p class="caption">CA model of forest fire spread in Tavira</p>
+				</div>
+			</div>
+			<p>Most things that consist of a number of identical components that change depending on local interactions can be simulated using cellular automata.</p>
+	 	<h2>Conclusion</h2>
+			<p>Conway's Game of Life is a famous cellular automata that can create complex patterns using simple rules. Different cellular automatas can be used to simulate many real-world processes. I hope you enjoyed reading this short page about the Game of Life and learned something new!</p>
+		<h2>References</h2>
+			<h3>Research</h3>
+				<ul>
+					<li>
+						<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life</a>						</li>
+					<li>
+						<a href="https://en.wikipedia.org/wiki/Cellular_automaton">https://en.wikipedia.org/wiki/Cellular_automaton</a>
+					</li>
+					<li>
+						<a href="https://en.wikibooks.org/wiki/Cellular_Automata/Applications_of_Cellular_Automata">https://en.wikibooks.org/wiki/Cellular_Automata/Applications_of_Cellular_Automata</a>
+					</li>
+					<li>
+						<a href="https://www.britannica.com/topic/Game-of-Life-cellular-automaton-by-Conway">https://www.britannica.com/topic/Game-of-Life-cellular-automaton-by-Conway</a>
+					</li>
+					<li>
+						<a href="https://www.nytimes.com/2020/12/28/science/math-conway-game-of-life.html">https://www.nytimes.com/2020/12/28/science/math-conway-game-of-life.html</a>
+					</li>
+					<li>
+						<a href="http://www.mjyonline.com/CellularAutomataUses.htm">http://www.mjyonline.com/CellularAutomataUses.htm</a>
+					</li>
+				</ul>
+			<h3>Images</h3>
+				<ul>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/4/48/Block.png">https://www.conwaylife.com/w/images/4/48/Block.png</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/b/ba/Loaf.png">https://www.conwaylife.com/w/images/b/ba/Loaf.png</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/6/61/Canoe.png">https://www.conwaylife.com/w/images/6/61/Canoe.png</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/2/29/Clips.png">https://www.conwaylife.com/w/images/2/29/Clips.png</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/b/b9/Blinker.gif">https://www.conwaylife.com/w/images/b/b9/Blinker.gif</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/3/37/Clock.gif">https://www.conwaylife.com/w/images/3/37/Clock.gif</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/d/dd/Figureeight.gif">https://www.conwaylife.com/w/images/d/dd/Figureeight.gif</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/e/ef/Pulsar.gif">https://www.conwaylife.com/w/images/e/ef/Pulsar.gif</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/8/81/Glider.gif">https://www.conwaylife.com/w/images/8/81/Glider.gif</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/2/21/Lwss.gif">https://www.conwaylife.com/w/images/2/21/Lwss.gif</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/9/9f/Spider.gif">https://www.conwaylife.com/w/images/9/9f/Spider.gif</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/7/7d/Schickengine.gif">https://www.conwaylife.com/w/images/7/7d/Schickengine.gif</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/6/6e/Rpentomino.png">https://www.conwaylife.com/w/images/6/6e/Rpentomino.png</a>
+					</li>
+					<li>
+						<a href="https://www.conwaylife.com/w/images/b/b6/Gosperglidergun.gif">https://www.conwaylife.com/w/images/b/b6/Gosperglidergun.gif</a>
+					</li>
+					<li>
+						<a href="https://www.youtube.com/watch?v=xP5-iIeKXE8">https://www.youtube.com/watch?v=xP5-iIeKXE8</a>
+					</li>
+					<li>
+						<a href="https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/beautiful-shell.jpg">https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/beautiful-shell.jpg</a>
+					</li>
+					<li>
+						<a href="https://media.npr.org/assets/img/2010/10/26/01_kiruna3_custom-7d1cd52d89467a185f893c77083eec13cd1bdbac.jpg">https://media.npr.org/assets/img/2010/10/26/01_kiruna3_custom-7d1cd52d89467a185f893c77083eec13cd1bdbac.jpg</a>
+					</li>
+					<li>
+						<a href="https://nhess.copernicus.org/articles/19/169/2019/nhess-19-169-2019-avatar-web.png">https://nhess.copernicus.org/articles/19/169/2019/nhess-19-169-2019-avatar-web.png</a>
+					</li>
+				</ul>
   </body>
 </html>
