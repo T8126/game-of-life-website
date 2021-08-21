@@ -1,2 +1,2 @@
 # game-of-life-website
-[https://t8126.github.io/game-of-life-website/src/](https://t8126.github.io/game-of-life-website/src/)
+[project website](https://t8126.github.io/game-of-life-website/src/)
